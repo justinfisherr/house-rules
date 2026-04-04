@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏡 House Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    :root {
+      --pink-light: #fce4ec;
+      --pink-mid: #f8bbd0;
+      --pink-accent: #f48fb1;
+      --pink-hot: #e91e8c;
+      --pink-deep: #c2185b;
+      --cream: #fff8f9;
+      --text: #4a2040;
+      --text-soft: #8d5a7b;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 20px rgba(233, 30, 140, 0.12);
+      --shadow-hover: 0 8px 32px rgba(233, 30, 140, 0.22);
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #fce4ec 0%, #ffd6e8 50%, #fce4ec 100%);
+      padding: 48px 24px 40px;
+      text-align: center;
+      border-bottom: 3px solid var(--pink-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '✿ ✿ ✿';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--pink-accent);
+      font-size: 18px;
+      letter-spacing: 16px;
+      opacity: 0.5;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 900;
+      color: var(--pink-deep);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    /* ── Cat photos strip ── */
+    .cat-strip {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      padding: 28px 24px 0;
+      flex-wrap: wrap;
+    }
+    .cat-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 0 0 4px var(--pink-accent), var(--shadow);
+      transition: transform 0.2s;
+    }
+    .cat-photo:hover { transform: scale(1.06) rotate(-2deg); }
+
+    /* ── Nav pills ── */
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 28px 20px 0;
+    }
+    nav a {
+      text-decoration: none;
+      background: white;
+      color: var(--pink-deep);
+      border: 2px solid var(--pink-accent);
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.18s;
+      box-shadow: 0 2px 8px rgba(233,30,140,0.08);
+    }
+    nav a:hover {
+      background: var(--pink-deep);
+      color: white;
+      border-color: var(--pink-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ── Section cards ── */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--pink-mid);
+      transition: box-shadow 0.2s;
+    }
+    .section-card:hover { box-shadow: var(--shadow-hover); }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-icon {
+      font-size: 2rem;
+      background: var(--pink-light);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid var(--pink-mid);
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--pink-deep);
+    }
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* ── Cat cards ── */
+    .cat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 480px) { .cat-cards { grid-template-columns: 1fr; } }
+    .cat-card {
+      background: var(--pink-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 2px solid var(--pink-mid);
+    }
+    .cat-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 3px solid white;
+    }
+    .cat-card h3 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--pink-deep);
+      margin-bottom: 4px;
+    }
+    .cat-card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    /* ── Info chips / lists ── */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--pink-light);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--pink-accent);
+    }
+    .info-item .bullet {
+      color: var(--pink-hot);
+      font-size: 1.1rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ── Steps ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: var(--pink-deep);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── Highlight badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pink-deep);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    /* ── Photo embed ── */
+    .photo-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .photo-row img {
+      flex: 1;
+      min-width: 140px;
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 3px solid var(--pink-mid);
+      box-shadow: var(--shadow);
+    }
+
+    /* ── Warning / tip box ── */
+    .tip-box {
+      background: linear-gradient(135deg, #fce4ec, #ffd6e8);
+      border: 2px solid var(--pink-accent);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--pink-deep);
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .tip-box .tip-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* ── No-water badge ── */
+    .no-water {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff3e0;
+      color: #e65100;
+      border: 2px solid #ffcc80;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      font-weight: 700;
+      background: var(--pink-light);
+      border-top: 2px solid var(--pink-mid);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--pink-mid), transparent);
+      border: none;
+      margin: 4px 0 16px;
+    }
+
+    /* ── Two-col layout inside card ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
+
+    .mini-card {
+      background: var(--pink-light);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      border: 2px solid var(--pink-mid);
+    }
+    .mini-card h4 {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--pink-deep);
+      margin-bottom: 8px;
+    }
+    .mini-card p, .mini-card li {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .mini-card ul { padding-left: 16px; }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🏡 Welcome Home Guide</h1>
+  <p>Thanks so much for watching the apartment! 🙏✨</p>
+</div>
+
+<!-- Cat photo strip -->
+<div class="cat-strip">
+  <img class="cat-photo" src="clover.jpg" alt="Clover" style="object-position: top;" />
+  <img class="cat-photo" src="gongju.jpg" alt="Gongju" />
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#wifi">📶 WiFi</a>
+  <a href="#cats">🐱 Cats</a>
+  <a href="#feeding">🍽 Feeding</a>
+  <a href="#litter">🚽 Litter</a>
+  <a href="#water">💧 Water</a>
+  <a href="#plants">🌿 Plants</a>
+  <a href="#trash">🗑 Trash</a>
+  <a href="#misc">🚗 Misc</a>
+</nav>
+
+<main>
+
+  <!-- ── WIFI ── -->
+  <section class="section-card" id="wifi">
+    <div class="section-header">
+      <div class="section-icon">📶</div>
+      <div>
+        <div class="section-title">WiFi</div>
+        <div class="section-subtitle">Stay connected 💕</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="mini-card">
+        <h4>Network 1</h4>
+        <p><strong>Name:</strong> Clovertail</p>
+        <p><strong>Password:</strong> iloveClover2024!</p>
+      </div>
+      <div class="mini-card">
+        <h4>Network 2</h4>
+        <p><strong>Name:</strong> GongjusWhisker</p>
+        <p><strong>Password:</strong> 2blackcats</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATS ── -->
+  <section class="section-card" id="cats">
+    <div class="section-header">
+      <div class="section-icon">🐱</div>
+      <div>
+        <div class="section-title">Meet Clover & Gongju (공주)</div>
+        <div class="section-subtitle">Two little black fluffballs 🖤</div>
+      </div>
+    </div>
+
+    <div class="cat-cards">
+      <div class="cat-card">
+        <img src="clover.jpg" alt="Clover the cat" style="object-position: top;" />
+        <h3>🌿 Clover</h3>
+        <p>Fluffy & curious with the most expressive golden eyes</p>
+      </div>
+      <div class="cat-card">
+        <img src="gongju.jpg" alt="Gongju the cat" />
+        <h3>👑 Gongju</h3>
+        <p>공주 means "princess" — she fully lives up to the name</p>
+      </div>
+    </div>
+
+    <div class="info-list">
+      <div class="info-item"><span class="bullet">🚫</span>Neither cat likes being picked up — just let them come to you!</div>
+      <div class="info-item"><span class="bullet">💬</span>If they're meowing: they probably want food or to play</div>
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">🧸</span>
+      <div>Toys & snacks are in the <strong>red TV stand (left side)</strong>. Play with them, then give a small snack — they'll chill right out!</div>
+    </div>
+  </section>
+
+  <!-- ── FEEDING ── -->
+  <section class="section-card" id="feeding">
+    <div class="section-header">
+      <div class="section-icon">🍽</div>
+      <div>
+        <div class="section-title">Feeding</div>
+        <div class="section-subtitle">Once a day keeps the meows away</div>
+      </div>
+    </div>
+    <div class="info-list">
+      <div class="info-item"><span class="bullet">🤖</span>The <strong>automatic feeder</strong> goes off early in the morning — so breakfast is covered!</div>
+      <div class="info-item"><span class="bullet">⏰</span>You just need to feed them <strong>once a day around 5 PM</strong></div>
+      <div class="info-item"><span class="bullet">🥫</span>Use <strong>1 container of wet food total</strong> — split half & half between the two bowls</div>
+    </div>
+  </section>
+
+  <!-- ── LITTER ── -->
+  <section class="section-card" id="litter">
+    <div class="section-header">
+      <div class="section-icon">🚽</div>
+      <div>
+        <div class="section-title">Litter</div>
+        <div class="section-subtitle">Keep it fresh!</div>
+      </div>
+    </div>
+    <div class="info-list">
+      <div class="info-item"><span class="bullet">🌅</span>Scoop the litter <strong>every morning</strong> (or whenever you can)</div>
+      <div class="info-item"><span class="bullet">⚠️</span>If it's not clean, they might go outside the box</div>
+      <div class="info-item"><span class="bullet">💕</span>If that happens — no stress, just clean it up!</div>
+    </div>
+  </section>
+
+  <!-- ── WATER ── -->
+  <section class="section-card" id="water">
+    <div class="section-header">
+      <div class="section-icon">💧</div>
+      <div>
+        <div class="section-title">Water</div>
+        <div class="section-subtitle">Fresh filtered every morning</div>
+      </div>
+    </div>
+    <div class="info-item">
+      <span class="bullet">🧊</span>
+      Every morning, refill their water bowl with <strong>fresh filtered water from the fridge</strong>
+    </div>
+  </section>
+
+  <!-- ── PLANTS ── -->
+  <section class="section-card" id="plants">
+    <div class="section-header">
+      <div class="section-icon">🌿</div>
+      <div>
+        <div class="section-title">Plants</div>
+        <div class="section-subtitle">They need love too 🌱</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="mini-card">
+        <h4>🌳 Outdoor Plants</h4>
+        <p>Water every <strong>~3 days</strong> using the hose outside</p>
+      </div>
+      <div class="mini-card">
+        <h4>🪴 Indoor Plants</h4>
+        <p>Water every <strong>Saturday</strong> — skip the last Saturday (when we're back!)</p>
+      </div>
+    </div>
+
+    <div class="photo-row">
+      <img src="plants_in_sink.jpg" alt="Indoor plants" />
+      <img src="outside_plants.jpg" alt="Outdoor plants with hose" />
+    </div>
+
+    <hr class="divider" />
+
+    <div class="badge">📋 How to Water Indoors</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">Bring plants into the <strong>bathroom</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Use the <strong>watering container with handle</strong></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Add tap water + a little <strong>houseplant water conditioner</strong> (in the kitchen)</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Pour until the <strong>soil is fully wet</strong></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">Let them <strong>drain in the bathroom</strong>, then return to their spots</div></div>
+    </div>
+
+    <div class="tip-box" style="margin-top:16px">
+      <span class="tip-icon">👆</span>
+      <div><strong>Finger test:</strong> Stick your finger in the soil. <strong>Wet → skip it. Dry → water it.</strong></div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="badge">🌳 Fig Tree (Living Room)</div>
+    <div class="photo-row">
+      <img src="tall_tree_water_meter.jpg" alt="Soil moisture meter" />
+    </div>
+    <div class="info-list" style="margin-top:12px">
+      <div class="info-item"><span class="bullet">📊</span>There's a <strong>moisture meter</strong> in the soil — water generously if it reads <strong>below 20%</strong></div>
+      <div class="info-item"><span class="bullet">🫙</span>Make sure the <strong>plastic tray underneath</strong> is in place to catch water</div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="no-water">🌵 Succulents — DO NOT water</div>
+  </section>
+
+  <!-- ── TRASH ── -->
+  <section class="section-card" id="trash">
+    <div class="section-header">
+      <div class="section-icon">🗑</div>
+      <div>
+        <div class="section-title">Trash</div>
+        <div class="section-subtitle">Every Thursday</div>
+      </div>
+    </div>
+    <div class="info-list">
+      <div class="info-item"><span class="bullet">📅</span>Take trash out <strong>every Thursday</strong></div>
+      <div class="info-item"><span class="bullet">📍</span>Put it in front of the <strong>house to the right</strong> (yes, it's weird — but that's correct! 😄)</div>
+      <div class="info-item"><span class="bullet">↩️</span>After pickup: bring the bin back</div>
+    </div>
+  </section>
+
+  <!-- ── MISC ── -->
+  <section class="section-card" id="misc">
+    <div class="section-header">
+      <div class="section-icon">🚗</div>
+      <div>
+        <div class="section-title">Parking & Doors</div>
+        <div class="section-subtitle">Quick reminders</div>
+      </div>
+    </div>
+    <div class="info-list">
+      <div class="info-item"><span class="bullet">🚗</span>Park <strong>as far forward as possible</strong> so neighbors can fit their cars</div>
+      <div class="info-item"><span class="bullet">🚪</span>Keep <strong>all doors closed</strong> at all times</div>
+      <div class="info-item"><span class="bullet">🧺</span>No need to lock the laundry room — feel free to use it! (detergent is available)</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Made with 💕 · Thanks again for watching over the place! 🐱🌿
+</footer>
+
+</body>
+</html>
