@@ -12,10 +12,10 @@
       --pink-mid: #f8bbd0;
       --pink-accent: #f48fb1;
       --pink-hot: #e91e8c;
-      --pink-deep: #c2185b;
+      --pink-deep: #ad1252;
       --cream: #fff8f9;
       --text: #4a2040;
-      --text-soft: #8d5a7b;
+      --text-soft: #7a4566;
       --card-bg: #ffffff;
       --shadow: 0 4px 20px rgba(233, 30, 140, 0.12);
       --shadow-hover: 0 8px 32px rgba(233, 30, 140, 0.22);
@@ -172,10 +172,11 @@
     }
     @media (max-width: 480px) { .cat-cards { grid-template-columns: 1fr; } }
     .cat-card {
-      background: var(--pink-light);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-      border: 2px solid var(--pink-mid);
+      background: none;
+      border-radius: 0;
+      padding: 14px 0 0;
+      border: none;
+      border-top: 1px solid var(--pink-mid);
     }
     .cat-card img {
       width: 100%;
@@ -213,7 +214,7 @@
       background: var(--pink-light);
       padding: 10px 14px;
       border-radius: var(--radius-sm);
-      border-left: 4px solid var(--pink-accent);
+      border-left: 1px solid var(--pink-accent);
     }
     .info-item .bullet {
       color: var(--pink-hot);
@@ -288,10 +289,11 @@
 
     /* ── Warning / tip box ── */
     .tip-box {
-      background: linear-gradient(135deg, #fce4ec, #ffd6e8);
-      border: 2px solid var(--pink-accent);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--pink-accent);
+      border-radius: 0;
+      padding: 14px 0 0;
       font-size: 0.92rem;
       font-weight: 700;
       color: var(--pink-deep);
@@ -308,7 +310,7 @@
       align-items: center;
       gap: 6px;
       background: #fff3e0;
-      color: #e65100;
+      color: #a33a00;
       border: 2px solid #ffcc80;
       padding: 8px 16px;
       border-radius: var(--radius-sm);
@@ -344,12 +346,13 @@
     @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
 
     .mini-card {
-      background: var(--pink-light);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      border: 2px solid var(--pink-mid);
+      background: none;
+      border-radius: 0;
+      padding: 12px 0 0;
+      border: none;
+      border-top: 1px solid var(--pink-mid);
     }
-    .mini-card h4 {
+    .mini-card h3 {
       font-size: 1rem;
       font-weight: 900;
       color: var(--pink-deep);
@@ -397,18 +400,18 @@
     <div class="section-header">
       <div class="section-icon">📶</div>
       <div>
-        <div class="section-title">WiFi</div>
+        <h2 class="section-title">WiFi</h2>
         <div class="section-subtitle">Stay connected 💕</div>
       </div>
     </div>
     <div class="two-col">
       <div class="mini-card">
-        <h4>Network 1</h4>
+        <h3>Network 1</h3>
         <p><strong>Name:</strong> Clovertail</p>
         <p><strong>Password:</strong> iloveClover2024!</p>
       </div>
       <div class="mini-card">
-        <h4>Network 2</h4>
+        <h3>Network 2</h3>
         <p><strong>Name:</strong> GongjusWhisker</p>
         <p><strong>Password:</strong> 2blackcats</p>
       </div>
@@ -420,7 +423,7 @@
     <div class="section-header">
       <div class="section-icon">🐱</div>
       <div>
-        <div class="section-title">Meet Clover & Gongju (공주)</div>
+        <h2 class="section-title">Meet Clover & Gongju (공주)</h2>
         <div class="section-subtitle">Two little black fluffballs 🖤</div>
       </div>
     </div>
@@ -434,18 +437,18 @@
       <div class="cat-card">
         <img src="gongju.jpg" alt="Gongju the cat" />
         <h3>👑 Gongju</h3>
-        <p>공주 means "princess" — she fully lives up to the name</p>
+        <p>공주 means "princess." She fully lives up to the name</p>
       </div>
     </div>
 
     <div class="info-list">
-      <div class="info-item"><span class="bullet">🚫</span>Neither cat likes being picked up — just let them come to you!</div>
+      <div class="info-item"><span class="bullet">🚫</span>Neither cat likes being picked up. Just let them come to you!</div>
       <div class="info-item"><span class="bullet">💬</span>If they're meowing: they probably want food or to play</div>
     </div>
 
     <div class="tip-box">
       <span class="tip-icon">🧸</span>
-      <div>Toys & snacks are in the <strong>red TV stand (left side)</strong>. Play with them, then give a small snack — they'll chill right out!</div>
+      <div>Toys & snacks are in the <strong>red TV stand (left side)</strong>. Play with them, then give a small snack. They'll chill right out!</div>
     </div>
   </section>
 
@@ -454,14 +457,14 @@
     <div class="section-header">
       <div class="section-icon">🍽</div>
       <div>
-        <div class="section-title">Feeding</div>
+        <h2 class="section-title">Feeding</h2>
         <div class="section-subtitle">Once a day keeps the meows away</div>
       </div>
     </div>
     <div class="info-list">
-      <div class="info-item"><span class="bullet">🤖</span>The <strong>automatic feeder</strong> goes off early in the morning — so breakfast is covered!</div>
+      <div class="info-item"><span class="bullet">🤖</span>The <strong>automatic feeder</strong> goes off early in the morning, so breakfast is covered!</div>
       <div class="info-item"><span class="bullet">⏰</span>You just need to feed them <strong>once a day around 5 PM</strong></div>
-      <div class="info-item"><span class="bullet">🥫</span>Use <strong>1 container of wet food total</strong> — split half & half between the two bowls</div>
+      <div class="info-item"><span class="bullet">🥫</span>Use <strong>1 container of wet food total</strong>, split half & half between the two bowls</div>
     </div>
   </section>
 
@@ -470,7 +473,7 @@
     <div class="section-header">
       <div class="section-icon">🚽</div>
       <div>
-        <div class="section-title">Litter</div>
+        <h2 class="section-title">Litter</h2>
         <div class="section-subtitle">Keep it fresh!</div>
       </div>
     </div>
@@ -486,7 +489,7 @@
     <div class="section-header">
       <div class="section-icon">💧</div>
       <div>
-        <div class="section-title">Water</div>
+        <h2 class="section-title">Water</h2>
         <div class="section-subtitle">Fresh filtered every morning</div>
       </div>
     </div>
@@ -501,19 +504,19 @@
     <div class="section-header">
       <div class="section-icon">🌿</div>
       <div>
-        <div class="section-title">Plants</div>
+        <h2 class="section-title">Plants</h2>
         <div class="section-subtitle">They need love too 🌱</div>
       </div>
     </div>
 
     <div class="two-col">
       <div class="mini-card">
-        <h4>🌳 Outdoor Plants</h4>
+        <h3>🌳 Outdoor Plants</h3>
         <p>Water every <strong>~3 days</strong> using the hose outside</p>
       </div>
       <div class="mini-card">
-        <h4>🪴 Indoor Plants</h4>
-        <p>Water every <strong>Saturday</strong> — skip the last Saturday (when we're back!)</p>
+        <h3>🪴 Indoor Plants</h3>
+        <p>Water every <strong>Saturday</strong>. Skip the last Saturday (when we're back!)</p>
       </div>
     </div>
 
@@ -545,13 +548,13 @@
       <img src="tall_tree_water_meter.jpg" alt="Soil moisture meter" />
     </div>
     <div class="info-list" style="margin-top:12px">
-      <div class="info-item"><span class="bullet">📊</span>There's a <strong>moisture meter</strong> in the soil — water generously if it reads <strong>below 20%</strong></div>
+      <div class="info-item"><span class="bullet">📊</span>There's a <strong>moisture meter</strong> in the soil. Water generously if it reads <strong>below 20%</strong></div>
       <div class="info-item"><span class="bullet">🫙</span>Make sure the <strong>plastic tray underneath</strong> is in place to catch water</div>
     </div>
 
     <hr class="divider" />
 
-    <div class="no-water">🌵 Succulents — DO NOT water</div>
+    <div class="no-water">🌵 Succulents: DO NOT water</div>
   </section>
 
   <!-- ── TRASH ── -->
@@ -559,13 +562,13 @@
     <div class="section-header">
       <div class="section-icon">🗑</div>
       <div>
-        <div class="section-title">Trash</div>
+        <h2 class="section-title">Trash</h2>
         <div class="section-subtitle">Every Thursday</div>
       </div>
     </div>
     <div class="info-list">
       <div class="info-item"><span class="bullet">📅</span>Take trash out <strong>every Thursday</strong></div>
-      <div class="info-item"><span class="bullet">📍</span>Put it in front of the <strong>house to the right</strong> (yes, it's weird — but that's correct! 😄)</div>
+      <div class="info-item"><span class="bullet">📍</span>Put it in front of the <strong>house to the right</strong> (yes, it's weird, but that's correct! 😄)</div>
       <div class="info-item"><span class="bullet">↩️</span>After pickup: bring the bin back</div>
     </div>
   </section>
@@ -575,14 +578,14 @@
     <div class="section-header">
       <div class="section-icon">🚗</div>
       <div>
-        <div class="section-title">Parking & Doors</div>
+        <h2 class="section-title">Parking & Doors</h2>
         <div class="section-subtitle">Quick reminders</div>
       </div>
     </div>
     <div class="info-list">
       <div class="info-item"><span class="bullet">🚗</span>Park <strong>as far forward as possible</strong> so neighbors can fit their cars</div>
       <div class="info-item"><span class="bullet">🚪</span>Keep <strong>all doors closed</strong> at all times</div>
-      <div class="info-item"><span class="bullet">🧺</span>No need to lock the laundry room — feel free to use it! (detergent is available)</div>
+      <div class="info-item"><span class="bullet">🧺</span>No need to lock the laundry room, feel free to use it! (detergent is available)</div>
     </div>
   </section>
 
